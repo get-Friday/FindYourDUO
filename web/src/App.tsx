@@ -7,7 +7,9 @@ function App() {
       <div className='my-20'>
         <img src={logoImg} />
       </div>
-      <h1 className='text-6xl text-white font-black'>Seu duo está aqui.</h1>
+      <h1 className='text-6xl text-white font-black'>
+        Seu <span className='bg-nlw-gradient text-transparent bg-clip-text'>duo</span> está aqui.
+      </h1>
     </main>
   )
 }
