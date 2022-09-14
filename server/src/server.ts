@@ -19,7 +19,15 @@ app.get('/games', async (req, res) => {
 
 app.post('/ads', (req, res) => res.status(201).json([]))
 
-app.get('/games/:id/ads', (req, res) => res.json([]))
+app.get('/games/:id/ads', async (req, res) => {
+    const gameId = req.params.id
+    const ads = await prisma.ad.findMany({
+        where: {
+            gameId,
+        }
+    })
+    return res.json(ads)
+})
 
 app.get('/ads/:id/discord', (req, res) => res.json([]))
 
