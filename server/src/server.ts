@@ -46,6 +46,17 @@ app.get('/games/:id/ads', async (req, res) => {
     }))
 })
 
-app.get('/ads/:id/discord', (req, res) => res.json([]))
+app.get('/ads/:id/discord', async (req, res) => {
+    const adId = req.params.id
+    const ad = await prisma.ad.findUniqueOrThrow({
+        select: {
+            discord: true
+        },
+        where: {
+            id: adId
+        }
+    })
+    return res.json(ad)
+})
 
 app.listen(3333)
