@@ -3,7 +3,7 @@ import { useRoute, useNavigation } from '@react-navigation/native'
 import { Background } from '../../components/Background'
 import { styles } from './styles'
 import { GameParams } from '../../@types/navigation'
-import { View, TouchableOpacity, Image, FlatList } from 'react-native'
+import { Text, View, TouchableOpacity, Image, FlatList } from 'react-native'
 import { Entypo } from '@expo/vector-icons'
 import { THEME } from '../../theme'
 import logoImg from '../../assets/logo-nlw-esports.png'
@@ -56,9 +56,12 @@ export function Game() {
           <DuoCard data={item} onConnect={() => {}}/>
         )}
         horizontal
-        contentContainerStyle={styles.contentList}
+        contentContainerStyle={duos.length > 0 ? styles.contentList : styles.emptyListContent}
         showsHorizontalScrollIndicator={false}
         style={styles.containerList}
+        ListEmptyComponent={() => (
+          <Text style={styles.emptyListText}>Não há anúncions publicados ainda.</Text>
+        )}
       />
 
     </SafeAreaView>
