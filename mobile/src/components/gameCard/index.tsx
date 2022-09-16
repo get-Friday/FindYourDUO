@@ -31,7 +31,7 @@ export function GameCard({ data, ...rest }: Props){
                         {data.title}
                     </Text>
                     <Text style={styles.ads}>
-                        {data._count.ads} anúncios
+                        {data._count.ads} anúncio(s)
                     </Text>
                 </LinearGradient>
             </ImageBackground>
