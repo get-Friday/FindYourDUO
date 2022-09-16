@@ -31,6 +31,13 @@ export function Game() {
         <Image source={logoImg} style={styles.logo} />
         <View style={styles.right}/>
       </View>
+
+      <Image 
+        source={{uri: game.bannerUrl}} 
+        style={styles.cover} 
+        resizeMode='cover'
+      />
+
       <Heading title={game.title} subtitle='Conecte-se e começe a jogar!'/>
     </SafeAreaView>
   </Background>
