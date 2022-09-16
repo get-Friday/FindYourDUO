@@ -53,7 +53,7 @@ export function Game() {
         data={duos}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
-          <DuoCard data={item}/>
+          <DuoCard data={item} onConnect={() => {}}/>
         )}
         horizontal
         contentContainerStyle={styles.contentList}
