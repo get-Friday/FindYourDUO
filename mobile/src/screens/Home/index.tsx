@@ -4,6 +4,7 @@ import { styles } from './styles'
 import logoImg from '../../assets/logo-nlw-esports.png'
 import { Heading } from '../../components/Heading'
 import { GameCard, GameCardProps } from '../../components/GameCard'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 export function Home(){
     const [games, setGames] = useState<GameCardProps[]>([])
@@ -13,7 +14,7 @@ export function Home(){
             .then(data => setGames(data))
     }, [])
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Image 
                 source={logoImg} 
                 style={styles.logo}
@@ -32,6 +33,6 @@ export function Home(){
                 horizontal
                 contentContainerStyle={styles.contentList}
             />
-        </View>
+        </SafeAreaView>
     )
 }
