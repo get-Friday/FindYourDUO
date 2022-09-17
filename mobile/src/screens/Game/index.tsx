@@ -17,7 +17,7 @@ export function Game() {
   const navigation = useNavigation()
   const [duos, setDuos] = useState<DuoCardProps[]>([])
 
-  function handleGoBack(){
+  function handleGoBack() {
     navigation.goBack()
   }
 
@@ -27,44 +27,44 @@ export function Game() {
       .then(data => setDuos(data))
   }, [])
   return (
-  <Background>
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={handleGoBack}>
-          <Entypo 
-            name='chevron-thin-left' 
-            color={THEME.COLORS.CAPTION_300}
-            size={20}
-          />
-        </TouchableOpacity>
-        <Image source={logoImg} style={styles.logo} />
-        <View style={styles.right}/>
-      </View>
+    <Background>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <TouchableOpacity onPress={handleGoBack}>
+            <Entypo
+              name='chevron-thin-left'
+              color={THEME.COLORS.CAPTION_300}
+              size={20}
+            />
+          </TouchableOpacity>
+          <Image source={logoImg} style={styles.logo} />
+          <View style={styles.right} />
+        </View>
 
-      <Image 
-        source={{uri: game.bannerUrl}} 
-        style={styles.cover} 
-        resizeMode='cover'
-      />
+        <Image
+          source={{ uri: game.bannerUrl }}
+          style={styles.cover}
+          resizeMode='cover'
+        />
 
-      <Heading title={game.title} subtitle='Conecte-se e começe a jogar!'/>
+        <Heading title={game.title} subtitle='Conecte-se e começe a jogar!' />
 
-      <FlatList 
-        data={duos}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-          <DuoCard data={item} onConnect={() => {}}/>
-        )}
-        horizontal
-        contentContainerStyle={duos.length > 0 ? styles.contentList : styles.emptyListContent}
-        showsHorizontalScrollIndicator={false}
-        style={styles.containerList}
-        ListEmptyComponent={() => (
-          <Text style={styles.emptyListText}>Não há anúncions publicados ainda.</Text>
-        )}
-      />
+        <FlatList
+          data={duos}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <DuoCard data={item} onConnect={() => { }} />
+          )}
+          horizontal
+          contentContainerStyle={duos.length > 0 ? styles.contentList : styles.emptyListContent}
+          showsHorizontalScrollIndicator={false}
+          style={styles.containerList}
+          ListEmptyComponent={() => (
+            <Text style={styles.emptyListText}>Não há anúncions publicados ainda.</Text>
+          )}
+        />
 
-    </SafeAreaView>
-  </Background>
+      </SafeAreaView>
+    </Background>
   )
 }
