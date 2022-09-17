@@ -12,7 +12,7 @@ interface Props {
 
 export function SelectGame({ data }: Props) {
   return (
-    <Select.Root>
+    <Select.Root name='game'>
       <Select.Trigger className='bg-zinc-900 inline-flex py-3 px-4 rounded text-sm  justify-between items-center [&[data-placeholder]]:text-zinc-500'>
         <Select.Value placeholder='Selecione o game que deseja jogar' className='placeholder:text-zinc-500'/>
         <Select.Icon> 
@@ -27,7 +27,7 @@ export function SelectGame({ data }: Props) {
           <Select.Viewport className='p-1'>
             { data.map(game => {
               return(
-                <Select.Item key={game.id} value={game.title} className="flex relative items-center hover:bg-violet-500 rounded h-6 p-2">
+                <Select.Item key={game.id} value={game.id} className="flex relative items-center hover:bg-violet-500 rounded h-6 p-2">
                   <Select.ItemText>
                     {game.title}
                   </Select.ItemText>
