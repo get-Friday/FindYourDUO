@@ -10,12 +10,14 @@ import logoImg from '../../assets/logo-nlw-esports.png'
 import { Heading } from '../../components/Heading'
 import { DuoCard, DuoCardProps } from '../../components/DuoCard'
 import { useState, useEffect } from 'react'
+import { DuoMatch } from '../../components/DuoMatch'
 
 export function Game() {
   const route = useRoute()
   const game = route.params as GameParams
   const navigation = useNavigation()
   const [duos, setDuos] = useState<DuoCardProps[]>([])
+  const [discordDuoSelected, setDiscordDuoSelected] = useState('Carlos')
 
   function handleGoBack() {
     navigation.goBack()
@@ -64,6 +66,11 @@ export function Game() {
           )}
         />
 
+        <DuoMatch 
+          visible={discordDuoSelected.length > 0}
+          discord={'Carlos#0001'}
+          onClose={() => setDiscordDuoSelected('')}
+        />
       </SafeAreaView>
     </Background>
   )
