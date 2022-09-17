@@ -1,9 +1,25 @@
 import * as Dialog from '@radix-ui/react-dialog'
-import * as Checkbox from '@radix-ui/react-checkbox';
-import { Check, GameController } from 'phosphor-react'
+import * as Checkbox from '@radix-ui/react-checkbox'
+import * as Select from '@radix-ui/react-select'
+import { CaretDown, CaretUp, Check, GameController } from 'phosphor-react'
 import { Input } from './Form/Input'
+import { useEffect, useState } from 'react'
+
+interface Game {
+  id: string
+  title: string
+}
 
 export function CreateAdModal() {
+  const [games, setGames] = useState<Game[]>([])
+  useEffect(() => {
+    fetch('http://localhost:3333/games')
+      .then(res => res.json())
+      .then(data => {
+        setGames(data)
+      })
+  }, [])
+
   return (
     <Dialog.Portal>
       <Dialog.Overlay className='bg-black/60 inset-0 fixed'/>
@@ -12,7 +28,35 @@ export function CreateAdModal() {
         <form className='mt-8 flex flex-col gap-4'>
         <div className='flex flex-col gap-2'>
           <label htmlFor='game' className='font-semibold'>Qual o game?</label>
-          <Input id='game' placeholder='Selecione o game que deseja jogar' />
+          <Select.Root>
+            <Select.Trigger className='bg-zinc-900 inline-flex py-3 px-4 rounded text-sm  justify-between items-center'>
+              <Select.Value placeholder='Selecione o game que deseja jogar' />
+              <Select.Icon> 
+                <CaretDown size={24} />  
+              </Select.Icon>
+            </Select.Trigger>
+            <Select.Portal className="bg-zinc-900 py-3 px-1 rounded text-sm text-white cursor-pointer">
+              <Select.Content className='bg-zinc-900 rounded overflow-hidden'>
+              <Select.ScrollUpButton className="flex items-center justify-center h-6 bg-zinc-900 cursor-default">
+                <CaretUp/>
+              </Select.ScrollUpButton>
+                <Select.Viewport className='p-1'>
+                  { games.map(game => {
+                    return(
+                      <Select.Item key={game.id} value={game.title} className="flex relative items-center hover:bg-violet-500 rounded h-6 p-2">
+                        <Select.ItemText>
+                          {game.title}
+                        </Select.ItemText>
+                      </Select.Item>
+                    )
+                  })}
+                </Select.Viewport>
+                <Select.ScrollDownButton className="flex items-center justify-center h-6 bg-zinc-900 cursor-default">
+                  <CaretDown/>
+                </Select.ScrollDownButton>
+              </Select.Content>
+            </Select.Portal>
+          </Select.Root>
         </div>
 
         <div className='flex flex-col gap-2'>
