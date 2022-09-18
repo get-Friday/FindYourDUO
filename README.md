@@ -18,4 +18,4 @@ Veja abaixo imagens da aplicação:
 
 ### Mobile
 
-<img src='/mobile/assets/mobileSample1.jpg' height='720px'> <img src='/mobile/assets/mobileSample2.jpg' height='720px'> <img src='/mobile/assets/mobileSample3.jpg' height='720px'>
+<img src='/mobile/assets/mobileSample1.jpg' height='480px'> <img src='/mobile/assets/mobileSample2.jpg' height='480px'> <img src='/mobile/assets/mobileSample3.jpg' height='480px'>
